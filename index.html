@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Disc Golf Data</title>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=M+PLUS+2:wght@200;400;600;800&display=swap');
+    </style>
+    <script src="social.js" defer></script>
+    <script src="geo.js" defer></script>
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <section>
+      <h1 class="hero-title"><span style="color:var(--selectgreen);">
+        Fairways</span> to <span style="color:var(--selectorange);">Friendships</span>:<br> Disc Golf's Unifying Power
+      </h1>
+      <h2 class="hero-author">By Trey Scheid</h2>
+      <p class="intro-text">
+        Disc Golf is an ecclectic sport, most people know as frisbee golf (we cannot call it that because of Wham-O). There is much to love about it from the low cost to its flexibility and accessibility. I see young and old play together, some for fun and some competitively. Disc golf courses can become part of natural reserves or public parks and help bring people to nature and use outdoor space for some clean fun.
+        <br>
+        <br>
+        After my dad and uncle introduced me to my first discs I have been enthralled by the ever frustrating challenge of becoming a better disc golfer. I could not help but drag my friends along with me and now it is a regular activity that has allowed me to grow closer to and develop with my friends.
+        <br>
+        <br>
+        Follow along as we dive into my past to see the people I have had the joy of playing with, where I have played, and how far I have come with my friends!
+      </p>
+    </section>
+
+    <!-- chart 1 Social network -->
+    <section>
+      <h1 class="section-title">Everything is Better Together</h1>
+      <p class="section-text">
+        Over the better part of the last decade I have logged 217 scorecards on paper and digitally. I usually keep score for all the people I play with except when asked not too, partially because of my competitive nature and obsession with data, but who knows which person will become a disc golf junky and wonder how they did their first few rounds?
+        <br>
+        <br>
+        As a social activity, disc golf reflects our social connections and groups. Lets see if we can discover which of my friends play with each other and discuss how that might reveal social dynamics off the course.
+      </p>
+    </section>
+    <br>
+    <div class="chart-holder network">
+      <h4 class="chart-title">Disc Golf Social Network: Exploring Player Relationships</h2>
+      <div id="network-container"></div>
+      
+      <button onclick="zoomIn()">Zoom in</button>
+      <button onclick="zoomOut()">Zoom out</button>
+      <button onclick="resetZoom()">Reset zoom</button>
+      <!-- <button onclick="panLeft()">Pan left</button>
+      <button onclick="panRight()">Pan right</button> -->
+      <button onclick="center()">Center</button>
+      <button id="Thickness" onclick="linear()">Thickness: Logarithmic</button>
+    </div>
+    <section>
+      <h3>Social Circles In Depth</h3>
+      <p class="section-text">
+        Given that these scores are all on cards including myself we see my connections to almost every player. There are a few clusters of interconnected players we can dive into. One group is detached completely from the rest (to the west) and one player Reid is a clear outlier.<br><br>
+        At the top we see my Ultimate Frisbee coach Zac and some of his friends I've played with. You can see that I've playd with him on roughly two occasions and the two groups are split off from him. To the right Chloe connects my school friends to my friends from high school. If we look further and lower right we see bing bing with 4 other players they are my ultimate frisbee teammates. These groups have no connections between them, I know each of them and most of them have actually met each other during my time at school. I think that means I need to invite all those parties out to play together!<br><br>
+        The main jumble has hidden levels. If we toggle the Thickness so that it is Linear instead, we can see more obviously that at the core is my dad and my best friends: James, Jeffrey, and Shane. (The linear scale shows the dramatic difference in value while the log retains some of the detail for all the weaker connections with fewer shared rounds). Besides my main crew we see I intermix with other school and church friends and extended family. <br><br>
+        You may notice an odd group off to the left, they are not connected to me or anyone else in the dataset. That round was a one time event, father-son rivalry, with team play, due to data formatting they are included as separarte entities.<br><br>
+        Interestingly Reid is the only solo player not connected to me, this is likely an error in the data or we played at the same course but in different groups. That is a reminder that the data does not capture everything in reality, Namo is friends with Gummo and my other teammates, or Eduardo and Chloe, Zoe and Shane. Yet briefly you see that even incomplete and imperfect most trends appear. <br><br>
+        Now that we have some context with who has played together, time to see what courses we've been to!
+      </p>
+    </section>
+    <!-- chart 2 -->
+    <section>
+      <h1 class="section-title">Mapping my Travels with Scorecards</h1>
+      <p class="section-text">
+        During the last decade I have been on many trips to see family or do fun things. Some people buy magnets or stickers, naturally I brought my discs and came home with scorecards. Whats better than to play with my friends or family to explore somewhere new. Lets see where I have gone and how frequent, or rare!
+      </p>
+    </section>
+    <br>
+    <div class="chart-holder map">
+      <h4 class="chart-title">Disc Golf in California: NorCal > Socal?</h2>
+      <div id="select-container">
+        Select Player: <select name="Player" id="select-player" onchange="run_it()"></select>
+      </div>
+      <div id="course-name"></div>
+      <div id="map-container"></div>
+
+      <button onclick="netzoomIn()">Zoom in</button>
+      <button onclick="netzoomOut()">Zoom out</button>
+      <button onclick="netresetZoom()">Reset zoom</button>
+      <!-- <button onclick="netpanLeft()">Pan left</button>
+      <button onclick="netpanRight()">Pan right</button> -->
+      <button onclick="netcenter()">Center</button>
+    </div>
+    <br>
+    <p class="section-text">
+      Besides the 27 hole course in Santa Cruz and the church camp in the Sierras there's two halves to this state. You can immediately find where I spent the most time living, my hometown in the East Bay Area. In Southern California, much to my own dissapointment, there is little indication that those rounds were more than a common vacation spot. However, if you know me, I moved to San Diego to go to College and spent many months by those courses. Despite the diversity of people I have played those courses with, I have not found many nor played them much. 
+      <br><br>
+      What selecting "Each Scorecard" shows us is rather similar to my own name, because I am in almost every round I tracked. More interesting is what "Total Players Scored" shows. Here the sum of the rounds from every player is shown for each course showing a general popularity based on my disc golf circle. Although most of the distribution is comparably the same, we see Golden Gate Park in San Francisco increases noticeably in size. This indicates that I usually play with more people than other courses, I can confirm this due to the medium range drive and other attractions nearby. Fun fact, this is also my favorite course. Wind and sun protected, variety of shots accross 18 holes (always play them all twice!) and each basket can be moved between 5 pin positions making it feel like a new experience every time.
+      <br><br>
+      This graph hides another instance of error in the data. I played with my family: Payton, Mark and Todd in Idaho on two occassinos, but no rounds exist. The beauty is that I still remember those experiences (including the largest forest of poison ivy I've ever seen). Mark lives in Oregon and Payton in Idaho so it is a fond memory. Not all rounds are like that though. As my scores will tell, there are some rough times when disc golf is certainly the most maddening activity in the world. Knowing that despite hours of practice, the result is purely your fault and its not what you were trying for. Luckily that is very entertaining when it is not you.
+      <br><br>
+      Now lets see how we have changed over the years.
+    </p>
+    <!-- chart 3 -->
+    <section>
+      <h1 class="section-title">Growing Together with Disc Golf</h1>
+      <p class="section-text">
+        There are a two main events that boosted my access to disc golf. First I recieved a drivers license extending my range for courses and frequency of play. Then I moved away and met many new friends to try out the San Diego options with. Lets see how big of an impact these had on me and on those I am connected with.
+      </p>
+    </section>
+    <br>
+    <div class="chart-holder">
+      <div class="time-chart" id="time-chart1"></div>
+      <!-- <div class="time-chart" id="time-chart2"></div> -->
+    </div>
+    <br>
+    <p class="section-text">
+      We can look at individual players to see when they first played disc golf with me and roughly how many unique courses they've played in total as the height of their section by todays date. 
+      <br>
+      <br>
+      A few events can be spotted; our father son tournament was on new years eve 2017 when the father son teams appear. I play with some church friends end of 2020 as COVID resttrictions loosened and before my senior year of high school. Then in my second year of college late 2022 to the present there is a cluster of new players which are my ultimate teammates I started playting with.
+      <br>
+      <br>
+      You may notice the bottom 5 areas are much thicker than the rest, this is my core group I mentioned previously which is my dad and some best friends. They are the most serious of everyone I play, owning their own bags and discs whereas most other people borrow my extras. We get more competitive and enjoy travelling to find new courses!
+      <br>
+      <br>
+      This competitiveness manifests itself in many ways from practicing on our own (maybe not jeffrey on this one), watching technique videos or pro tour events. And buying way too many discs and bags. Another example though is our performance, we of course (no pun intended) try to get better as we play! (They like to call me coach because I try to make them better too). 
+      <br>
+    </p>
+    <br>
+    <div class="chart-holder">
+      <h4 class="chart-title">Our Journey of Failures and Successes</h2>
+      <div class="time-chart" id="time-chart3"></div>
+    </div>
+    <br>
+    <p class="section-text">
+      As you can see, Jeffrey is somewhat special in our group. He recieves a lot of attention for his play style and scores, almost as much as what he got for his long hair. Otherwise we all keep it interesting with some close rounds. 
+      <br>
+      <br>
+      My Dad and I played a lot in my early years before I had my own car to go and play, this often meant without my friends. He recently started getting more into pickle ball and I am now too cool for him so he doesn't have as many rounds recently.
+      <br>
+      <br>
+      One cool thing about this sport is how despite having rough days and great days, playing at all different kinds of courses, you can still compare your scores with the +/- to par. For the most part we all have a negative slope indicating we are getting better, although I think our progress is rather slow compared to many people who first start playing this sport.
+      <br>
+      <br>
+      Keeping on our topic of scores with time, there is another intersting facet that I would like to explore: time of day and perfromance. We might just find out that jeffrey only performs bad on days that we play extra early (we often have to knock on his window despite scheduled pickups).
+    </p>
+    <br>
+    <div class="chart-holder">
+      <div class="time-chart" id="time-chart4"></div>
+      <p>*Note: This is including only scorecards from after 6/6/2020 when we started playing more consistently and so our averages are not affecting by our scores when we first started playing. Morning is starting before 10:30am, midday is before 3:00pm and afternoon is anything later. 
+      </p>
+    </div>
+    <br>
+    <p class="section-text">
+      Well, Jeffrey may not have the early morning excuse, but he can say that he plays poorly antime before 3pm! In fact we all play better in the afternoon except Shane. Keep in mind that in disc golf a difference in average score of just 1 or two stroke is rather significant.
+    </p>
+
+    <section>
+      <h1 class="section-title">Conclusion</h1>
+      <p class="section-text">
+        As I mentioned, many people can play disc golf from my mom, to my younger cousins and college buddies. Some with no frisbee experience and others who play for hours every week. Sometimes money is put on the table, other times you are just exploring somewhere new. I hope that you see the versatility of the sport and are encouraged to spend another day outside throwing around the <s>frisbee</s> disc
+        
+        <br>
+        <br>
+        Thank You for Reading!
+
+        <br>
+        <br>
+        <br>
+        <br>
+        &copy;Trey Scheid June 2023
+      </p>
+    </section>
+    
+  </body>
+</html>

@@ -1,0 +1,186 @@
+:root {
+    --text-width: 650px;
+    
+    --selectwhite:rgba(255, 255, 255, 0.75);
+    --selectorange: rgb(255, 200, 33);
+    --selectgreen: rgb(185, 239, 91);
+    --highlightgreen:rgb(209, 248, 140);
+    --background-color: rgb(29, 29, 29);
+
+    background-color: var(--background-color);
+    font-family: 'M PLUS 2', sans-serif;
+    color: var(--selectwhite);
+}
+
+h1 {
+    margin-top: 10%;
+}
+
+section {
+    width: var(--text-width);
+    margin: auto;
+}
+
+.hero-title {
+    font-size: 3rem;
+    text-align: left;
+    color: rgba(255, 255, 255, 0.75);
+    line-height: 130%;
+    /* margin-bottom: 2rem; */
+}
+
+.hero-author {
+    margin-bottom: default;
+    font-size: 16px;
+    color: rgba(255, 255, 255, 0.85);
+    text-align: left;
+}
+
+.section-text {
+    width: var(--text-width);
+    margin: auto;
+}
+
+svg {
+    box-shadow: -2px -2px 8px 0 rgba(0, 0, 0, 0.5) inset;
+    /* filter: drop-shadow(3px 3px 3px white); */
+}
+
+g {color: #003f5c;}
+.time-chart svg {
+    box-shadow: none;
+}
+
+.map .chart-title {
+    color: var(--selectgreen);
+}
+.network .chart-title {
+    color: var(--selectorange);
+}
+
+.chart-holder {
+    text-align: center;
+}
+
+.chart-holder p {
+    width: var(--text-width);
+    margin: auto;
+    text-align: left;
+    font-size: 9px;
+}
+
+.chart-holder button {
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    /* margin: 4px 2px; */
+    transition-duration: 0.4s;
+    cursor: pointer;
+    background-color: var(--background-color); 
+    color: var(--selectwhite); 
+
+    padding:0.2em .75em;
+    margin:0.1em;
+    border:0.15em solid var(--selectwhite);
+    /* box-sizing: border-box; */
+}
+
+.chart-holder.network button:hover {
+    /* background-color: #4CAF50; */
+    color: var(--selectorange);
+}
+
+.chart-holder.map button:hover {
+    /* background-color: var(--selectgreen); */
+    color: var(--selectgreen);
+}
+
+#select-container {
+    width: 600px;
+    text-align: left;
+    margin: auto;
+}
+
+#select-player {
+    /* erase defaults */
+    appearance: none;
+    padding: 0;
+    margin: 0;
+
+    min-width: 5ch;
+    max-width: 25ch;
+    border:0.15em solid var(--selectwhite);
+    border-radius: 0;
+    padding: 0.25em 0.5em;
+    margin-bottom: 1em;
+    cursor: pointer;
+    line-height: 1.1;
+    background-color: var(--background-color);
+    color: var(--selectwhite); 
+}
+
+#network-container .node-label {
+    font-size: 12px;
+    text-anchor: middle;
+    /* dominant-baseline: middle; */ /*useful if centered on circle*/
+    stroke: var(--background-color);
+    stroke-width: 4;
+    paint-order: stroke;
+}
+
+#map-container .bubbles {
+    fill: var(--selectgreen);
+    stroke-width: .1;
+    stroke: var(--background-color);
+    opacity: .75;
+}
+
+.chart-holder.map #course-name {
+    fill: white;
+    font-size: 1em;
+    position: absolute;
+    text-align: left;
+}
+
+#time-chart1 #time1label {
+    fill: white;
+    font-size: 1em;
+    position: absolute;
+    text-align: left;
+}
+
+.time-chart text {
+    fill: white;
+    font-family: sans-serif;
+}
+
+.timeaxis {
+    fill: var(--selectwhite);
+    font-size: 14;
+    text-anchor: middle;
+    font-weight: 400; 
+    font-family: "M PLUS 2", sans-serif;
+    /* dominant-baseline: middle; */
+}
+
+#time-chart3 .timeaxis {
+    fill: var(--selectwhite);
+    font-size: 9px;
+    text-anchor: end;
+    /* font-weight: 200;  */
+    /* font-family: "M PLUS 2", sans-serif; */
+    /* dominant-baseline: middle; */
+}
+
+#timetitle {
+    fill: var(--selectwhite);
+    font-size: 18;
+    text-anchor: middle;
+    /* dominant-baseline: middle; */
+
+    display: block;
+    font-family: "M PLUS 2", sans-serif;
+    font-weight: 700; 
+    height: 24px;
+}
